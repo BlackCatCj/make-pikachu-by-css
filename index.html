@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cssPicachu</title>
+    <title>用css画一只皮卡丘</title>
     <link rel="stylesheet" href="./style.css">
+    <style id="styleTag"></style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="nose"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="face left"></div>
-        <div class="face right"></div>
-        <div class="upperLip left"></div>
-        <div class="upperLip right"></div>
-        <div class="lowerLip-wrapper">
-            <div class="lowerLip"></div>
+    <!-- 展示代码部分 -->
+    <div class="code-wrapper">
+        <pre id="code"></pre>
+    </div>
+
+    <!-- 预览效果部分 -->
+    <div class="perview-wrapper">
+        <div class="preview">
+            <div class="wrapper">
+                <div class="nose"></div>
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="upperLip left"></div>
+                <div class="upperLip right"></div>
+                <!-- 可以将lowerLip-wrapper这个div整体放在最前面 -->
+                <!-- 因为文档流的原理，后面的div会压在前面的上面 -->
+                <!-- 如果放在最前面就不用再css中给所有前面的元素加z-index: 1了 -->
+                <div class="lowerLip-wrapper">
+                    <div class="lowerLip"></div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+
+
+
+    <!-- 引入当前目录下的main.js文件 -->
+    <script src="./main.js"></script>
 </body>
 
 </html>
