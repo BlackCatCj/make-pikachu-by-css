@@ -31,6 +31,38 @@ padding: 10px;
     height:100%;
 }
 
+.actions{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display:flex;
+    flex-direction: column;
+}
+
+.actions>button { /* 按钮美化 */
+	width: 100px; /* 宽度 */
+    height: 40px; /* 高度 */
+    margin:10px;
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 20px; /* 边框半径 */
+	background: #1E90FF; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+    font-size: 15px; /* 字体大小 */
+    
+}
+.actions>button:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+}
+
+.actions>button.active{
+    box-shadow: 2px 2px 3px rgba(0, 0, 0 , 0.8);
+}
+/* .actions>button.focus{
+
+} */
 
 
 

@@ -1,21 +1,62 @@
 // 在html中写出代码展示
 !function () {
+
+
+    var duration = 30
+    var flag = false
+    $('.actions').on('click', 'button', function (e) {
+        let $button = $(e.currentTarget) // button
+        let speed = $button.attr('data-speed') //这样就知道点击的是那个按钮
+        $button.addClass('active')
+            .siblings('.active').removeClass('active') //如果有active(设置了按钮选中的阴影)样式则删掉样式
+        switch (speed) {
+            case 'slow':
+                duration = 100
+                break
+            case 'normal':
+                duration = 30
+                break
+            case 'fast':
+                duration = 5
+                break
+            case 'finish':
+                flag = true
+                break
+        }
+    })
+
+
+
+
+
     //prefix空字符串 code 传入的代码  fn 回调  
     function writeCode(prefix, code, fn) {
         let container = document.querySelector('#code')
         let styleTag = document.querySelector('#styleTag')
         let n = 0
-        let id = setInterval(() => {
+        let id
+        // setTimeout比setInterval要好些,因为它是类似与延时递归的调用,还能继续调用外部参数
+        // setInterval以运行就不能再读取外部的参数
+        id = setTimeout(function run() {
             n += 1
             container.innerHTML = code.substring(0, n)
-            styleTag.innerHTML = code.substring(0, n)
             // 每次都显示最后一行代码，这样就不会因为代码过长超出限定范围了
+            styleTag.innerHTML = code.substring(0, n)
             container.scrollTop = container.scrollHeight
-            if (n >= code.length) {
-                window.clearInterval(id)
+            // 中断操作  直接停止显示代码,直接展示结果
+            if (flag === true) {
+                styleTag.innerHTML = code
+                window.clearsetTimeout()
+            }
+
+            // 如果代码没有执行完,则继续再运行run()函数
+            if (n < code.length) {
+                // 此时就会再读取外部的duration变量的值,然后速度就变了
+                id = setTimeout(run, duration)
+            } else {
                 fn && fn.call()
             }
-        }, 10)
+        }, duration)
     }
 
     let code = `
