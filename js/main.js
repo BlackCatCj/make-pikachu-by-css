@@ -43,6 +43,7 @@
             // 每次都显示最后一行代码，这样就不会因为代码过长超出限定范围了
             styleTag.innerHTML = code.substring(0, n)
             container.scrollTop = container.scrollHeight
+
             // 中断操作  直接停止显示代码,直接展示结果
             if (flag === true) {
                 styleTag.innerHTML = code
